@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Homepage is up', async ({ page }) => {
   await page.goto('https://www.glean.com', { waitUntil: 'domcontentloaded' });
-  await expect(page).toHaveTitle('Work AI for all.');
+  await expect(page).toHaveTitle('Work AI for all - AI platform for agents, assistant, search');
 });
 
 test('Get a Demo page is up', async ({ page }) => {
