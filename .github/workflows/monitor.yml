@@ -1,16 +1,16 @@
-name: Run Downtime Monitor
+name: Website Downtime Monitor
 
 on:
   schedule:
     - cron: "*/5 * * * *"   # runs every 5 minutes
-  workflow_dispatch:         # lets you also trigger manually
+  workflow_dispatch:       # allows manual runs
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
@@ -19,10 +19,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install -D @playwright/test
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests on BrowserStack
+        run: npx playwright test
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        run: npm test
