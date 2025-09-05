@@ -1,0 +1,12 @@
+{
+  "name": "glean-monitor",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "browserstack-node-sdk": "^1.16.0"
+  }
+}
