@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test';
 
 test('Homepage is up', async ({ page }) => {
-  await page.goto('https://www.glean.com', { timeout: 30000 });
-  await expect(page).toHaveTitle(/Glean/i);
+  await page.goto('https://www.glean.com', { waitUntil: 'domcontentloaded' });
+  await expect(page).toHaveTitle(/Glean/);
 });
 
-test('Get a demo page is up', async ({ page }) => {
-  await page.goto('https://www.glean.com/get-a-demo', { timeout: 30000 });
-  await expect(page.locator('h1')).toContainText(/Demo|Request/i);
+test('Get a Demo page is up', async ({ page }) => {
+  await page.goto('https://www.glean.com/get-a-demo', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('h1')).toContainText('Get a Demo');
 });
 
 test('Blog page is up', async ({ page }) => {
-  await page.goto('https://www.glean.com/blog', { timeout: 30000 });
-  await expect(page).toHaveTitle(/Blog/i);
+  await page.goto('https://www.glean.com/blog', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('h1')).toContainText(/Blog/i);
 });
