@@ -1,11 +1,13 @@
-import type { PlaywrightTestConfig } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   testDir: './',
+  timeout: 30 * 1000,
+  retries: 1,
   use: {
     browserName: 'chromium',
-    viewport: { width: 1280, height: 720 },
-    actionTimeout: 0,
+    headless: true,
+    trace: 'on-first-retry',
   },
-};
-export default config;
+  reporter: [['list']],
+});
