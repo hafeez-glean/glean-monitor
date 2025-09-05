@@ -12,5 +12,5 @@ test('Get a Demo page is up', async ({ page }) => {
 
 test('Blog page is up', async ({ page }) => {
   await page.goto('https://www.glean.com/blog', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('h1')).toContainText(/Blog/i);
+  await expect(page.locator('h1')).toContainText('What’s new at Glean?');
 });
